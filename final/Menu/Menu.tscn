@@ -1,0 +1,205 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Menu/backgroundForest.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/blue_button00.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/blue_button01.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/ButtonFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Menu/circle_outline.svg" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "spinning"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureProgress:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 2.5 ),
+"transitions": PoolRealArray( 0.5, 0.724452, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureProgress:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0, 720.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureProgress:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.5
+margin_top = -189.254
+margin_right = 156.5
+margin_bottom = 178.746
+grow_horizontal = 2
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 313.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.14902, 0.254902, 0.419608, 1 )
+custom_colors/font_outline_modulate = Color( 0.94902, 0.980392, 0.996078, 1 )
+text = "The Game"
+align = 1
+
+[node name="StartGame" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_left = 61.0
+margin_top = 121.0
+margin_right = 251.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 190, 49 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/StartGame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -61.0
+margin_top = -10.5
+margin_right = 61.0
+margin_bottom = 11.5
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "START GAME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Configurations" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_left = 61.0
+margin_top = 220.0
+margin_right = 251.0
+margin_bottom = 269.0
+rect_min_size = Vector2( 190, 49 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Configurations"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -10.5
+margin_right = 84.0
+margin_bottom = 11.5
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "CONFIGURATIONS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_left = 61.0
+margin_top = 319.0
+margin_right = 251.0
+margin_bottom = 368.0
+rect_min_size = Vector2( 190, 49 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.5
+margin_top = -11.0
+margin_right = 24.5
+margin_bottom = 11.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Loading" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.811765, 0.937255, 0.988235, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Loading"]
+autoplay = "spinning"
+anims/spinning = SubResource( 1 )
+
+[node name="TextureProgress" type="TextureProgress" parent="Loading"]
+modulate = Color( 0.2146, 0.50357, 0.74, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -131.0
+margin_top = -131.0
+margin_right = 131.0
+margin_bottom = 131.0
+rect_rotation = 482.125
+rect_scale = Vector2( -1, 1 )
+rect_pivot_offset = Vector2( 131, 131 )
+value = 56.0
+texture_progress = ExtResource( 7 )
+fill_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Panel/VBoxContainer/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
